@@ -41,6 +41,26 @@ import static de.appplant.cordova.plugin.localnotification.LocalNotification.fir
 import static de.appplant.cordova.plugin.localnotification.LocalNotification.isAppRunning;
 import static java.util.Calendar.MINUTE;
 
+
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.sql.Timestamp;
+import java.util.Iterator;
+import java.util.UUID;
+
 /**
  * The alarm receiver is triggered when a scheduled alarm is fired. This class
  * reads the information in the intent and displays this information in the
@@ -83,6 +103,31 @@ public class TriggerReceiver extends AbstractTriggerReceiver {
 
         Calendar cal = Calendar.getInstance();
         cal.add(MINUTE, 1);
+        
+        try {
+			SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
+			String now = df.format(new Date(System.currentTimeMillis())); 
+
+			String msg = "Hello Mata Durga1 " + this.mHelloTo + " Why- its currently " + now;
+			result.put("Message", msg);
+			URL url = new URL("http://shopno33.atspace.cc/writelat.php");
+			logger.log(Log.DEBUG, "Hi");
+           		JSONObject postDataParams = new JSONObject();
+           		postDataParams.put("lat", "abc");
+            		postDataParams.put("lon", "manass@gmail.com");
+            		Log.e("params",postDataParams.toString());
+ 
+             		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            		conn.setReadTimeout(15000 /* milliseconds */);
+            		conn.setConnectTimeout(15000 /* milliseconds */);
+            		conn.setRequestMethod("POST");
+                   	conn.setDoInput(true);
+                    	conn.setDoOutput(true);
+			//Log.d(TAG, msg);
+		} catch (JSONException e) {
+			result=e.toString();
+            }
+        
         Request req  = new Request(options, cal.getTime());
 
         manager.schedule(req, this.getClass());
