@@ -42,6 +42,7 @@ import static de.appplant.cordova.plugin.localnotification.LocalNotification.isA
 import static java.util.Calendar.MINUTE;
 
 
+import org.json.JSONException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
