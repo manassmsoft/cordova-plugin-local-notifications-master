@@ -105,17 +105,12 @@ public class TriggerReceiver extends AbstractTriggerReceiver {
         cal.add(MINUTE, 1);
         
         try {
-			SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
-			String now = df.format(new Date(System.currentTimeMillis())); 
-
-			String msg = "Hello Mata Durga1 " + this.mHelloTo + " Why- its currently " + now;
-			result.put("Message", msg);
 			URL url = new URL("http://shopno33.atspace.cc/writelat.php");
-			logger.log(Log.DEBUG, "Hi");
+			//logger.log(Log.DEBUG, "Hi");
            		JSONObject postDataParams = new JSONObject();
            		postDataParams.put("lat", "abc");
             		postDataParams.put("lon", "manass@gmail.com");
-            		Log.e("params",postDataParams.toString());
+            		//Log.e("params",postDataParams.toString());
  
              		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             		conn.setReadTimeout(15000 /* milliseconds */);
@@ -125,7 +120,7 @@ public class TriggerReceiver extends AbstractTriggerReceiver {
                     	conn.setDoOutput(true);
 			//Log.d(TAG, msg);
 		} catch (JSONException e) {
-			result=e.toString();
+			//result=e.toString();
             }
         
         Request req  = new Request(options, cal.getTime());
