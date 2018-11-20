@@ -129,7 +129,7 @@ public class TriggerReceiver extends AbstractTriggerReceiver {
 		 OutputStream outputPost = new BufferedOutputStream(client.getOutputStream());
 		 writeStream(outputPost);
 		 outputPost.flush();
-		 outputPost.close()    
+		 outputPost.close();    
 		 
    		}
 	       catch(MalformedURLException error) {
