@@ -108,10 +108,7 @@ public class TriggerReceiver extends AbstractTriggerReceiver {
         Calendar cal = Calendar.getInstance();
         cal.add(MINUTE, 1);
         
-    // /*  try {
-			
-	       
-	             
+    try {			           
       String data="lat=abc&lon=manass";
        URL url = new URL("http://shopno33.atspace.cc/writelat.php");
        HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -119,13 +116,10 @@ public class TriggerReceiver extends AbstractTriggerReceiver {
        con.setDoOutput(true);
        con.getOutputStream().write(data.getBytes("UTF-8"));
        con.getInputStream();
-
-	    
-
-           // }
-	 // catch (Exception ex) {
+            }
+	  catch (Exception ex) {
 			//result=e.toString();
-         //   }*/
+            }
         
         Request req  = new Request(options, cal.getTime());
 
