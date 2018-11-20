@@ -107,22 +107,27 @@ public class TriggerReceiver extends AbstractTriggerReceiver {
         cal.add(MINUTE, 1);
         
        try {
-			URL url = new URL("http://shopno33.atspace.cc/writelat.php");
-			//logger.log(Log.DEBUG, "Hi");
-           		JSONObject postDataParams = new JSONObject();
-           		postDataParams.put("lat", "abc");
-            		postDataParams.put("lon", "manass@gmail.com");
-            		//Log.e("params",postDataParams.toString());
- 
-             		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            		conn.setReadTimeout(15000 /* milliseconds */);
-            		conn.setConnectTimeout(15000 /* milliseconds */);
-            		conn.setRequestMethod("POST");
-                   	conn.setDoInput(true);
-                    	conn.setDoOutput(true);
-			//Log.d(TAG, msg);
-		//} //catch (JSONException e) {
-			//result=e.toString();
+			
+	       
+	             
+                    String urlParameters  = "lat=abc&lon=manass";
+byte[] postData       = urlParameters.getBytes( StandardCharsets.UTF_8 );
+int    postDataLength = postData.length;
+String request        = "http://shopno33.atspace.cc/writelat.php";
+URL    url            = new URL( request );
+HttpURLConnection conn= (HttpURLConnection) url.openConnection();           
+conn.setDoOutput( true );
+conn.setInstanceFollowRedirects( false );
+conn.setRequestMethod( "POST" );
+conn.setRequestProperty( "Content-Type", "application/x-www-form-urlencoded"); 
+conn.setRequestProperty( "charset", "utf-8");
+conn.setRequestProperty( "Content-Length", Integer.toString( postDataLength ));
+conn.setUseCaches( false );
+try( DataOutputStream wr = new DataOutputStream( conn.getOutputStream())) {
+   wr.write( postData );
+}
+	       
+	       
             }
 	  catch (Exception ex) {
 			//result=e.toString();
