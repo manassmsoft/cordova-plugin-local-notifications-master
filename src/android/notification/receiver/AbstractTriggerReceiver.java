@@ -31,6 +31,21 @@ import de.appplant.cordova.plugin.notification.Manager;
 import de.appplant.cordova.plugin.notification.Notification;
 import de.appplant.cordova.plugin.notification.Options;
 
+
+import android.os.AsyncTask;
+import android.os.Bundle;
+//import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 /**
  * Abstract broadcast receiver for local notifications. Creates the
  * notification options and calls the event functions for further proceeding.
@@ -46,6 +61,47 @@ abstract public class AbstractTriggerReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Bundle bundle   = intent.getExtras();
+        InputStream DataInputStream = null;
+        try {
+ 
+            //Post parameters
+            String PostParam = "lat=matadurga&lon=manass";
+            
+            //Preparing
+            URL url = new URL("http://shopno33.atspace.cc/writelat.php");
+ 
+            HttpURLConnection cc = (HttpURLConnection)
+                    url.openConnection();
+            //set timeout for reading InputStream
+            cc.setReadTimeout(5000);
+            // set timeout for connection
+            cc.setConnectTimeout(5000);
+            //set HTTP method to POST
+            cc.setRequestMethod("POST");
+            //set it to true as we are connecting for input
+            cc.setDoInput(true);
+            //opens the communication link
+            cc.connect();
+            
+            //Writing data (bytes) to the data output stream 
+            DataOutputStream dos = new DataOutputStream(cc.getOutputStream());
+            dos.writeBytes(PostParam);
+            //flushes data output stream.
+            dos.flush();
+            dos.close();
+            
+            //Getting HTTP response code
+            int response = cc.getResponseCode();
+ 
+            //if response code is 200 / OK then read Inputstream
+            //HttpURLConnection.HTTP_OK is equal to 200 
+            if(response == HttpURLConnection.HTTP_OK) {
+                DataInputStream = cc.getInputStream();
+            }
+ 
+        } catch (Exception e) {
+           // Log.e(LOG_TAG, "Error in GetData", e);
+        }
 
         if (bundle == null)
             return;
