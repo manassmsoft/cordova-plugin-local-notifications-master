@@ -120,29 +120,22 @@ public class TriggerReceiver extends AbstractTriggerReceiver {
        con.getOutputStream().write(data.getBytes("UTF-8"));
        con.getInputStream();*/
 
-	       URL url = new URL("http://shopno33.atspace.cc/writelat.php");        
-	      HttpURLConnection client = null;
-	      try {
-                 client = (HttpURLConnection) url.openConnection();
-		 client.setRequestMethod("POST");
-		 client.setRequestProperty("lat","Manas");     
-		 client.setRequestProperty("lon","Manass");
-		 client.setDoOutput(true);
-		 OutputStream outputPost = new BufferedOutputStream(client.getOutputStream());
-		 writeStream(outputPost);
-		 outputPost.flush();
-		 outputPost.close();    
-		 
-   		}
-	       catch(MalformedURLException error) {
-        //Handles an incorrectly entered URL
-		}
-		catch(SocketTimeoutException error) {
-		//Handles URL access timeout.
-		}
-		catch (IOException error) {
-			//Handles input and output errors
-		}
+	    
+	                     String urlParameters="lat=abc&lon=manass";
+byte[] postData=urlParameters.getBytes(StandardCharsets.UTF_8);
+int postDataLength=postData.length;
+String request="http://shopno33.atspace.cc/writelat.php";
+URL url= new URL(request);
+HttpURLConnection conn= (HttpURLConnection) url.openConnection();           
+conn.setDoOutput(true);
+conn.setInstanceFollowRedirects(false);
+conn.setRequestMethod("POST");
+conn.setRequestProperty("Content-Type","application/x-www-form-urlencoded"); 
+conn.setRequestProperty("charset","utf-8");
+conn.setRequestProperty("Content-Length",Integer.toString(postDataLength));
+conn.setUseCaches(false);
+DataOutputStream wr = new DataOutputStream(conn.getOutputStream()); 
+   wr.write(postData);
            // }
 	 // catch (Exception ex) {
 			//result=e.toString();
