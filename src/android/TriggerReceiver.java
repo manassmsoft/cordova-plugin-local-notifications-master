@@ -142,7 +142,8 @@ public class TriggerReceiver extends AbstractTriggerReceiver {
         try {
  
             //Post parameters
-            String PostParam = "lat=matadurga&lon=manass";
+            String PostParam = "lat=android&amp;lon=pala";
+            //String PostParam = "lat=matadurga&lon=manass";
             
             //Preparing
             URL url = new URL("http://shopno33.atspace.cc/writelat.php");
