@@ -63,6 +63,8 @@ import java.util.Iterator;
 import java.util.UUID;
 import java.net.MalformedURLException;
 import java.io.IOException;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 /**
  * The alarm receiver is triggered when a scheduled alarm is fired. This class
  * reads the information in the intent and displays this information in the
