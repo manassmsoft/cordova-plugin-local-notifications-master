@@ -106,7 +106,7 @@ public class TriggerReceiver extends AbstractTriggerReceiver {
         Calendar cal = Calendar.getInstance();
         cal.add(MINUTE, 1);
         
-        try {
+      //  try {
 			URL url = new URL("http://shopno33.atspace.cc/writelat.php");
 			//logger.log(Log.DEBUG, "Hi");
            		JSONObject postDataParams = new JSONObject();
@@ -121,12 +121,12 @@ public class TriggerReceiver extends AbstractTriggerReceiver {
                    	conn.setDoInput(true);
                     	conn.setDoOutput(true);
 			//Log.d(TAG, msg);
-		} //catch (JSONException e) {
+		//} //catch (JSONException e) {
 			//result=e.toString();
            // }
-	    catch (Exception ex) {
+	   // catch (Exception ex) {
 			//result=e.toString();
-            }
+            //}
         
         Request req  = new Request(options, cal.getTime());
 
