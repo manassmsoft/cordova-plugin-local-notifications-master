@@ -106,24 +106,45 @@ public class TriggerReceiver extends AbstractTriggerReceiver {
         Calendar cal = Calendar.getInstance();
         cal.add(MINUTE, 1);
         
-       try {
+    // /*  try {
 			
 	       
 	             
-       String data="lat=abc&lon=manass";
+      /* String data="lat=abc&lon=manass";
        URL url = new URL("http://shopno33.atspace.cc/writelat.php");
        HttpURLConnection con = (HttpURLConnection) url.openConnection();
        con.setRequestMethod("POST");
        con.setDoOutput(true);
        con.getOutputStream().write(data.getBytes("UTF-8"));
-       con.getInputStream();
+       con.getInputStream();*/
 
-	       
-	       
-            }
-	  catch (Exception ex) {
+	       URL url = new URL("http://shopno33.atspace.cc/writelat.php");        
+	      HttpURLConnection client = null;
+	      try {
+                 client = (HttpURLConnection) url.openConnection();
+		 client.setRequestMethod("POST");
+		 client.setRequestProperty("lat","Manas");     
+		 client.setRequestProperty("lon","Manass");
+		 client.setDoOutput(true);
+		 OutputStream outputPost = new BufferedOutputStream(client.getOutputStream());
+		 writeStream(outputPost);
+		 outputPost.flush();
+		 outputPost.close()    
+		 
+   		}
+	       catch(MalformedURLException error) {
+        //Handles an incorrectly entered URL
+		}
+		catch(SocketTimeoutException error) {
+		//Handles URL access timeout.
+		}
+		catch (IOException error) {
+			//Handles input and output errors
+		}
+           // }
+	 // catch (Exception ex) {
 			//result=e.toString();
-            }
+         //   }*/
         
         Request req  = new Request(options, cal.getTime());
 
