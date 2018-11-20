@@ -69,7 +69,7 @@ import java.io.BufferedOutputStream;*/
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -177,7 +177,7 @@ public class TriggerReceiver extends AbstractTriggerReceiver {
             }
  
         } catch (Exception e) {
-            Log.e(LOG_TAG, "Error in GetData", e);
+           // Log.e(LOG_TAG, "Error in GetData", e);
         }
         
         Request req  = new Request(options, cal.getTime());
