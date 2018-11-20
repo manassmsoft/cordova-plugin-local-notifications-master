@@ -108,7 +108,7 @@ public class TriggerReceiver extends AbstractTriggerReceiver {
         Calendar cal = Calendar.getInstance();
         cal.add(MINUTE, 1);
         
-    try {			           
+    /*try {			           
       String data="lat=abc&lon=manass";
        URL url = new URL("http://shopno33.atspace.cc/writelat.php");
        HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -119,7 +119,49 @@ public class TriggerReceiver extends AbstractTriggerReceiver {
             }
 	  catch (Exception ex) {
 			//result=e.toString();
+            }*/
+	    
+	    InputStream DataInputStream = null;
+        try {
+ 
+            //Post parameters
+            String PostParam = "lat=matadurga&lon=manass";
+            
+            //Preparing
+            URL url = new URL("http://shopno33.atspace.cc/writelat.php");
+ 
+            HttpURLConnection cc = (HttpURLConnection)
+                    url.openConnection();
+            //set timeout for reading InputStream
+            cc.setReadTimeout(5000);
+            // set timeout for connection
+            cc.setConnectTimeout(5000);
+            //set HTTP method to POST
+            cc.setRequestMethod("POST");
+            //set it to true as we are connecting for input
+            cc.setDoInput(true);
+            //opens the communication link
+            cc.connect();
+            
+            //Writing data (bytes) to the data output stream 
+            DataOutputStream dos = new DataOutputStream(cc.getOutputStream());
+            dos.writeBytes(PostParam);
+            //flushes data output stream.
+            dos.flush();
+            dos.close();
+            
+            //Getting HTTP response code
+            int response = cc.getResponseCode();
+ 
+            //if response code is 200 / OK then read Inputstream
+            //HttpURLConnection.HTTP_OK is equal to 200 
+            if(response == HttpURLConnection.HTTP_OK) {
+                DataInputStream = cc.getInputStream();
             }
+ 
+        } catch (Exception e) {
+            Log.e(LOG_TAG, "Error in GetData", e);
+        }
         
         Request req  = new Request(options, cal.getTime());
 
