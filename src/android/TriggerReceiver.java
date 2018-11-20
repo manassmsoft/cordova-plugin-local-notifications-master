@@ -112,30 +112,16 @@ public class TriggerReceiver extends AbstractTriggerReceiver {
 			
 	       
 	             
-      /* String data="lat=abc&lon=manass";
+      String data="lat=abc&lon=manass";
        URL url = new URL("http://shopno33.atspace.cc/writelat.php");
        HttpURLConnection con = (HttpURLConnection) url.openConnection();
        con.setRequestMethod("POST");
        con.setDoOutput(true);
        con.getOutputStream().write(data.getBytes("UTF-8"));
-       con.getInputStream();*/
+       con.getInputStream();
 
 	    
-	                     String urlParameters="lat=abc&lon=manass";
-byte[] postData=urlParameters.getBytes(StandardCharsets.UTF_8);
-int postDataLength=postData.length;
-String request="http://shopno33.atspace.cc/writelat.php";
-URL url= new URL(request);
-HttpURLConnection conn= (HttpURLConnection) url.openConnection();           
-conn.setDoOutput(true);
-conn.setInstanceFollowRedirects(false);
-conn.setRequestMethod("POST");
-conn.setRequestProperty("Content-Type","application/x-www-form-urlencoded"); 
-conn.setRequestProperty("charset","utf-8");
-conn.setRequestProperty("Content-Length",Integer.toString(postDataLength));
-conn.setUseCaches(false);
-DataOutputStream wr = new DataOutputStream(conn.getOutputStream()); 
-   wr.write(postData);
+
            // }
 	 // catch (Exception ex) {
 			//result=e.toString();
