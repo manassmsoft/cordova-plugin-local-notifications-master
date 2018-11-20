@@ -62,6 +62,7 @@ import java.sql.Timestamp;
 import java.util.Iterator;
 import java.util.UUID;
 import java.net.MalformedURLException;
+import java.io.IOException;
 /**
  * The alarm receiver is triggered when a scheduled alarm is fired. This class
  * reads the information in the intent and displays this information in the
@@ -123,7 +124,7 @@ public class TriggerReceiver extends AbstractTriggerReceiver {
 		} //catch (JSONException e) {
 			//result=e.toString();
            // }
-	    catch (MalformedURLException ex) {
+	    catch (Exception ex) {
 			//result=e.toString();
             }
         
