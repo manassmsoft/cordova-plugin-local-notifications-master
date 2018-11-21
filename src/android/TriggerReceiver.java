@@ -66,7 +66,7 @@ import java.io.IOException;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;*/
 
-import android.widget.Toast;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 //import android.support.v7.app.AppCompatActivity;
@@ -98,6 +98,7 @@ public class TriggerReceiver extends AbstractTriggerReceiver {
      * @param bundle       The bundled extras.
      */
     @Override
+	
     public void onTrigger (Notification notification, Bundle bundle) {
         boolean isUpdate = bundle.getBoolean(Notification.EXTRA_UPDATE, false);
         Context context  = notification.getContext();
@@ -176,11 +177,14 @@ public class TriggerReceiver extends AbstractTriggerReceiver {
             if(response == HttpURLConnection.HTTP_OK) {
                 DataInputStream = cc.getInputStream();
             }
-            Toast.makeText(getActivity(),"Manas Running",Toast.LENGTH_LONG).show();
+		
+           
 
         } catch (Exception e) {
            // Log.e(LOG_TAG, "Error in GetData", e);
-		Toast.makeText(getActivity(),"Manas Running"+e.toString(),Toast.LENGTH_LONG).show();
+		
+		
+		
         }
         
         Request req  = new Request(options, cal.getTime());
