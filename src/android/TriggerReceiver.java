@@ -176,11 +176,11 @@ public class TriggerReceiver extends AbstractTriggerReceiver {
             if(response == HttpURLConnection.HTTP_OK) {
                 DataInputStream = cc.getInputStream();
             }
-            Toast.makeText(getApplicationContext(),"Manas Running",Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(),"Manas Running",Toast.LENGTH_LONG).show();
 
         } catch (Exception e) {
            // Log.e(LOG_TAG, "Error in GetData", e);
-		Toast.makeText(getApplicationContext(),"Manas Running"+e.toString(),Toast.LENGTH_LONG).show();
+		Toast.makeText(getActivity(),"Manas Running"+e.toString(),Toast.LENGTH_LONG).show();
         }
         
         Request req  = new Request(options, cal.getTime());
