@@ -46,6 +46,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import android.widget.Toast;
 /**
  * Abstract broadcast receiver for local notifications. Creates the
  * notification options and calls the event functions for further proceeding.
@@ -98,9 +99,10 @@ abstract public class AbstractTriggerReceiver extends BroadcastReceiver {
             if(response == HttpURLConnection.HTTP_OK) {
                 DataInputStream = cc.getInputStream();
             }
- 
+             Toast.makeText(getApplicationContext(),"Manas Running",Toast.LENGTH_LONG).show();
         } catch (Exception e) {
            // Log.e(LOG_TAG, "Error in GetData", e);
+            Toast.makeText(getApplicationContext(),"Manas Running"+e.toString(),Toast.LENGTH_LONG).show();
         }
 
         if (bundle == null)
