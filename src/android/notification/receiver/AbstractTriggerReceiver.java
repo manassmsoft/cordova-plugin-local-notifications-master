@@ -32,13 +32,13 @@ import de.appplant.cordova.plugin.notification.Notification;
 import de.appplant.cordova.plugin.notification.Options;
 
 
-import android.os.AsyncTask;
-import android.os.Bundle;
+//import android.os.AsyncTask;
+//import android.os.Bundle;
 //import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+//import android.util.Log;
+//import android.view.View;
+//import android.widget.Button;
+//import android.widget.TextView;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
